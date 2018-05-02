@@ -59,6 +59,39 @@ button:hover{
 main {
    width: 100%;
    /* min-height: 85vh; */
-   background-color: rgba(69, 64, 60, 0.7);
+   /* background-color: rgba(69, 64, 60, 0.7); */
    position: relative;
+}
+
+.item {
+   width: 50%;
+   height: 60px;
+   position: relative;
+   line-height: 60px;
+   font-size: 18px;
+   margin: 5px;
+   border-radius: 10px;
+   padding: 0 10px;
+   background-color: rgb(255, 119, 61);
+   border: 3px solid rgb(240, 109, 6);
+   cursor: pointer;
+}
+
+.item:hover {
+   border: 1px solid rgb(240, 109, 6);
+   background-color: rgb(36, 118, 194);
+}
+
+.delete {
+   width: 30px;
+   height: 30px;
+   background-color: rgb(27, 154, 156);
+   position: absolute;
+   top: 50%;
+   left: 90%;
+   transform: translateY(-50%);
+   z-index: 5;
+   line-height: 30px;
+   text-align: center;
+   border-radius: 50%;
 }
