@@ -31,14 +31,14 @@ $(document).ready(function(){
    });
 
 
-   $(document).on('click', '.delete', function(){
+   $(document).on('click', '.delete-btn', function(){
       var thisItem = $(this).parent();
       var idItem = thisItem.attr('id');
       console.log(idItem);
       deleteItem(idItem);
    });
 
-   $(document).on('click', '.modify', function(){
+   $(document).on('click', '.modify-btn', function(){
       var itemContainer = $(this).parent();
       var idItem = itemContainer.attr('id');
 
@@ -68,9 +68,9 @@ $(document).ready(function(){
             for (var i = 0; i < data.length; i++) {
                $('#list').append(
                   "<div class='item-ctn' id='"+ data[i]['id'] + "'>" +
-                     "<div class='modify'>M</div>" +
+                     "<div class='modify-btn'>M</div>" +
                      "<div class='item'>" + data[i]['text'] + "</div>" +
-                     "<div class='delete'>X</div>" +
+                     "<div class='delete-btn'>X</div>" +
                   "</div>"
                )
             }
@@ -92,9 +92,9 @@ $(document).ready(function(){
                console.log(data);
                $('#list').append(
                   "<div class='item-ctn' id='"+ data['id'] + "'>" +
-                     "<div class='modify'>M</div>" +
+                     "<div class='modifyn-bt'>M</div>" +
                      "<div class='item'>" + data['text'] + "</div>" +
-                     "<div class='delete'>X</div>" +
+                     "<div class='delete-btn'>X</div>" +
                   "</div>"
                )
          },
