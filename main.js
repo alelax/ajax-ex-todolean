@@ -38,6 +38,21 @@ $(document).ready(function(){
       deleteItem(idItem);
    });
 
+   $(document).on('click', '.modify', function(){
+      var itemContainer = $(this).parent();
+      var idItem = itemContainer.attr('id');
+
+      var thisItem = itemContainer.children('.item');
+      var content = thisItem.text();
+
+      var usrInput = prompt("Modifica todo selezionato: " + content);
+
+      console.log( usrInput + " " + idItem);
+      updateItem(usrInput, idItem);
+      // var idItem = thisItem.attr('id');
+      // console.log(idItem);
+      // deleteItem(idItem);
+   });
 
    /* ***** FUNZIONI ***** */
 
@@ -52,7 +67,11 @@ $(document).ready(function(){
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                $('#list').append(
-                  "<div class='item' id='"+ data[i]['id'] +"'>" + data[i]['text'] + "<div class='delete'>X</div>" +"</div>"
+                  "<div class='item-ctn' id='"+ data[i]['id'] + "'>" +
+                     "<div class='modify'>M</div>" +
+                     "<div class='item'>" + data[i]['text'] + "</div>" +
+                     "<div class='delete'>X</div>" +
+                  "</div>"
                )
             }
          },
@@ -72,7 +91,11 @@ $(document).ready(function(){
          success : function(data){
                console.log(data);
                $('#list').append(
-                  "<li class='item'>" + data['text'] + "</li>"
+                  "<div class='item-ctn' id='"+ data['id'] + "'>" +
+                     "<div class='modify'>M</div>" +
+                     "<div class='item'>" + data['text'] + "</div>" +
+                     "<div class='delete'>X</div>" +
+                  "</div>"
                )
          },
 
@@ -82,16 +105,34 @@ $(document).ready(function(){
       });
    }
 
-   function deleteItem(itemid) {
+   function updateItem(newContent, itemid){
       $.ajax({
-            url : "http://138.68.64.12:3007/todo/",
-            method : "DELETE",
+            url : "http://138.68.64.12:3007/todo/" + itemid,
+            method : "PUT",
             data : {
-               id : itemid
+               id : itemid,
+               text : newContent
             },
             success : function(data){
                console.log(data);
-               // $('#list').children("#"+data.id).remove();
+               $('#list').children("#"+itemid).children('.item').text(newContent);
+            },
+            error : function(e){
+               console.log(e);
+            },
+      });
+   }
+
+   function deleteItem(itemid) {
+      $.ajax({
+            url : "http://138.68.64.12:3007/todo/" + itemid,
+            method : "DELETE",
+            // data : {
+            //    id : itemid
+            // },
+            success : function(data){
+               console.log(data);
+               $('#list').children("#"+itemid).remove();
             },
             error : function(e){
                console.log(e);

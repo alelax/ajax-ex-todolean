@@ -41,6 +41,8 @@ button {
    height: 80px;
    border-radius: 50%;
    position: absolute;
+   font-size: 80px;
+   line-height: 80px;
    top: 50%;
    left: 75%;
    transform: translate(-50%, -50%);
@@ -62,16 +64,26 @@ main {
    /* background-color: rgba(69, 64, 60, 0.7); */
    position: relative;
 }
-
-.item {
+.item-ctn {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
    width: 50%;
-   height: 60px;
+   min-height: 60px;
    position: relative;
+   left: 50%;
+   transform: translateX(-50%);
    line-height: 60px;
    font-size: 18px;
    margin: 5px;
    border-radius: 10px;
    padding: 0 10px;
+}
+
+.item {
+   width: 80%;
+   height: 60px;
+   padding: 0 15px;
    background-color: rgb(255, 119, 61);
    border: 3px solid rgb(240, 109, 6);
    cursor: pointer;
@@ -83,15 +95,32 @@ main {
 }
 
 .delete {
-   width: 30px;
-   height: 30px;
+   width: 60px;
+   height: 60px;
    background-color: rgb(27, 154, 156);
-   position: absolute;
-   top: 50%;
-   left: 90%;
-   transform: translateY(-50%);
-   z-index: 5;
-   line-height: 30px;
+   border: 3px solid rgb(240, 109, 6);
+   line-height: 60px;
    text-align: center;
-   border-radius: 50%;
+   cursor: pointer;
+
+}
+
+.delete:hover {
+   background-color: rgb(241, 55, 14);
+
+}
+
+.modify {
+   width: 60px;
+   height: 60px;
+   border: 3px solid rgb(240, 109, 6);
+   background-color: rgb(10, 208, 18);
+   line-height: 60px;
+   text-align: center;
+   cursor: pointer;
+
+}
+
+.modify:hover {
+   background-color: rgb(26, 128, 179);
 }
